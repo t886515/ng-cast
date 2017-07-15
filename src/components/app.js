@@ -12,10 +12,14 @@ angular
 
       this.searchResults = function(response) {
         this.videos = response;
-        this.currentVideo = this.videos[0];
+        this.currentVideo = response[0];
       }.bind(this);
       
-      youTube.search('cats', this.searchResults);
+      this.result = function(input) {
+        youTube.search(input, this.searchResults);
+      }.bind(this);
+      
+      this.result('lonely island');
     }
   }
   
