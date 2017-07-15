@@ -5,7 +5,9 @@ angular.module('video-player')
   bindings: {
     result: '<'
   },
-  controller: function(youTube) {
-    
+  controller: function(youTube, $scope) {
+    this.fkthis = function(input) {
+      youTube.search(input, this.result);
+    };
   }
 });
