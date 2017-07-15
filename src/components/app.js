@@ -2,12 +2,20 @@ angular
   .module('video-player')
   .component('app', {
     templateUrl: 'src/templates/app.html',
-    controller: function() {
+    controller: function(youTube) {
       this.videos = window.exampleVideoData;
       this.currentVideo = this.videos[0];
       
-      this.selectVideo = function(video) { this.currentVideo = video; }.bind(this);
-      this.searchResults = function() { return 1; };
+      this.selectVideo = function(video) {
+        this.currentVideo = video;
+      }.bind(this);
+
+      this.searchResults = function(response) {
+        this.videos = response;
+        this.currentVideo = this.videos[0];
+      }.bind(this);
+      
+      youTube.search('cats', this.searchResults);
     }
   }
   
